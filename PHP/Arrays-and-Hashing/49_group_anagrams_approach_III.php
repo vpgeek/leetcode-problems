@@ -26,7 +26,6 @@ Input: ["",""]
 output: [["",""]]
 */
 
-header('Content-type: application/json');
 class Solution {
 
     /**
@@ -38,24 +37,18 @@ class Solution {
      */
     function groupAnagrams($strs) {
         $anagrams = [];
-
         for ($i=0; $i<count($strs); $i++) {
             // build key using char count of each string
             $char = array_fill(0, 26, 0);
             for ($j=0; $j<strlen($strs[$i]); $j++) {
                 $char[ord($strs[$i][$j])-97]++;
             }
-            $key = implode($char);
-
+            $key = implode('c', $char);
             // group anagrams
-            if (isset($anagrams[$key])) {
-                $anagrams[$key][] = $strs[$i];
-            } else {
-                $anagrams[$key] = [$strs[$i]];
-            }
+            $anagrams[$key][] = $strs[$i];
         }
 
-        return array_values($anagrams);
+        return $anagrams;
     }
 }
 
