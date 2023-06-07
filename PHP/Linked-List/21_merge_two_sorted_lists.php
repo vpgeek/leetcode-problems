@@ -86,21 +86,13 @@ class Solution {
 
 // list 1
 $list1 = new ListNode(1);
-$node1 = new ListNode(2);
-$node2 = new ListNode(4);
-
-$list1->next = $node1;
-$node1->next = $node2;
+$list1->next = new ListNode(2);
+$list1->next->next = new ListNode(4);
 
 // list 2
-
 $list2 = new ListNode(1);
-$node3 = new ListNode(3);
-$node4 = new ListNode(4);
-
-$list2->next = $node3;
-$node3->next = $node4;
-
+$list2->next = new ListNode(3);
+$list2->next->next = new ListNode(4);
 
 $s = new Solution();
 $mergedList = $s->mergeTwoLists($list1, $list2);
