@@ -7,7 +7,6 @@ Given the root of a binary tree, return its maximum depth.
 
 A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
 
-
 Input: root = [3,9,20,null,null,15,7]
 Output: 3
 
@@ -18,6 +17,12 @@ Output: 3
             15   7
 
 */
+
+/**
+ * Big O Analysis
+ * Time Complexity - O(n)
+ * Space Complexity - O(n)
+ */
 
 /**
  * Definition for a binary tree node.
@@ -44,19 +49,17 @@ class Solution {
      */
     function maxDepth($root) {
         if ($root == null) return 0;
-        return max($this->maxDepth($root->left), $this->maxDepth($root->right)) + 1;
+        $leftDepth = $this->maxDepth($root->left);
+        $rightDepth = $this->maxDepth($root->right);
+        return max($leftDepth, $rightDepth) + 1;
     }
 }
 
-$a1 = new TreeNode(3);
-$a2 = new TreeNode(9);
-$a3 = new TreeNode(20);
-$a4 = new TreeNode(15);
-$a5 = new TreeNode(7);
-$a1->left = $a2;
-$a1->right = $a3;
-$a3->left = $a4;
-$a3->right = $a5;
+$root = new TreeNode(3);
+$root->left = new TreeNode(9);
+$root->right = new TreeNode(20);
+$root->right->left = new TreeNode(15);
+$root->right->right = new TreeNode(7);
 
-$sol = new Solution();
-echo $sol->maxDepth($a1);
+$s = new Solution();
+echo $s->maxDepth($root);

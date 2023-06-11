@@ -50,7 +50,7 @@ class Solution {
         ListNode current = dummy;
         int carry = 0;
 
-        while (l1 != null && l2 != null) {
+        while (l1 != null || l2 != null) {
             int n1 = (l1 != null) ? l1.val : 0;
             int n2 = (l2 != null) ? l2.val : 0;
             int sum = carry + n1 + n2;
@@ -82,13 +82,26 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        ListNode l1 = new ListNode(2);
-        l1.next = new ListNode(4);
-        l1.next.next = new ListNode(3);
+        // ListNode l1 = new ListNode(2);
+        // l1.next = new ListNode(4);
+        // l1.next.next = new ListNode(3);
 
-        ListNode l2 = new ListNode(5);
-        l2.next = new ListNode(6);
-        l2.next.next = new ListNode(4);
+        // ListNode l2 = new ListNode(5);
+        // l2.next = new ListNode(6);
+        // l2.next.next = new ListNode(4);
+
+        ListNode l1 = new ListNode(9);
+        l1.next = new ListNode(9);
+        l1.next.next = new ListNode(9);
+        l1.next.next.next = new ListNode(9);
+        l1.next.next.next.next = new ListNode(9);
+        l1.next.next.next.next.next = new ListNode(9);
+        l1.next.next.next.next.next.next = new ListNode(9);
+
+        ListNode l2 = new ListNode(9);
+        l2.next = new ListNode(9);
+        l2.next.next = new ListNode(9);
+        l2.next.next.next = new ListNode(9);
 
         Solution s = new Solution();
         s.printList(l1);
