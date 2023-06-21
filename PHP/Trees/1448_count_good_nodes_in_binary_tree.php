@@ -58,14 +58,14 @@ class TreeNode {
 
 class Solution {
 
+    public $count = 0;
     /**
      * @param TreeNode $root
      * @return Integer
      */
     function goodNodes($root) {
-        $count = 0;
-        $this->goodNodesHelper($root, PHP_INT_MIN, $count);
-        return $count;
+        $this->goodNodesHelper($root, PHP_INT_MIN);
+        return $this->count;
     }
 
     /**
@@ -73,15 +73,15 @@ class Solution {
      * @param Integer $max
      * @return null
      */
-    function goodNodesHelper($root, $max, &$count) {
+    function goodNodesHelper($root, $max) {
         if ($root == null) return;
 
         if ($root->val >= $max) {
-            $count++;
+            $this->count++;
         }
         $max = max($max, $root->val);
-        $this->goodNodesHelper($root->left, $max, $count);
-        $this->goodNodesHelper($root->right, $max, $count);
+        $this->goodNodesHelper($root->left, $max);
+        $this->goodNodesHelper($root->right, $max);
     }
 }
 
